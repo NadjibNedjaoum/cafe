@@ -77,7 +77,22 @@
   .nav nav a{ text-decoration:none; opacity:0.85; }
   .nav nav a:hover{ opacity:1; }
   @media (max-width:760px){
-    .nav .brand{ width:126px; height:38px; }
+    /* JPEG masks are unreliable on mobile Safari, so use the source image. */
+    .nav .brand{
+      width:126px;
+      height:38px;
+      background:none;
+      -webkit-mask:none;
+      mask:none;
+    }
+    .nav .brand img{
+      display:block;
+      width:100%;
+      height:100%;
+      max-width:none;
+      object-fit:cover;
+      object-position:center 59%;
+    }
     .nav nav{ display:none; }
   }
 
@@ -137,6 +152,7 @@
     mask-mode:luminance;
     filter:drop-shadow(0 5px 22px rgba(0,0,0,0.65));
   }
+  .hero-title img{display:none;}
   .hero-sub{
     max-width:520px;
     margin-top:28px;
@@ -492,6 +508,19 @@
       align-items:center;
     }
     .nav .brand{font-size:1.05rem;}
+    .hero-title{
+      background:none;
+      -webkit-mask:none;
+      mask:none;
+    }
+    .hero-title img{
+      display:block;
+      width:100%;
+      height:100%;
+      max-width:none;
+      object-fit:cover;
+      object-position:center 60%;
+    }
     .hero{
       min-height:100svh;
       padding:112px 20px 36px;
@@ -572,7 +601,7 @@
     </div>
   </div>
 
-  <h1 class="hero-title" aria-label="La Barak"></h1>
+  <h1 class="hero-title" aria-label="La Barak"><img src="logo-la-barak.jpg" alt=""></h1>
   <p class="hero-sub">La Barak est un bistrot vintage où se mêlent le charme d antan et une ambiance décontractée. Ce lieu accueillant propose une sélection de cafés, boissons et plats de qualité, parfaits pour une pause agréable. Avec ses livres et jeux de société à disposition, La Barak offre une expérience conviviale et relaxante, idéale pour se détendre tout en savourant des mets raffinés et des boissons variées.</p>
 
   <div class="hero-cta">
