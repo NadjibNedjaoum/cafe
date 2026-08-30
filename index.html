@@ -60,38 +60,27 @@
   }
   .nav .brand{
     display:block;
-    width:clamp(118px, 13vw, 156px);
-    height:42px;
+    width:156px;
+    height:48px;
     overflow:hidden;
     flex:none;
-    background:currentColor;
-    -webkit-mask:url("logo-la-barak.jpg") center 59% / 100% auto no-repeat;
-    mask:url("logo-la-barak.jpg") center 59% / 100% auto no-repeat;
-    -webkit-mask-mode:luminance;
-    mask-mode:luminance;
   }
   .nav .brand img{
-    display:none;
+    display:block;
+    width:130%;
+    height:100%;
+    max-width:none;
+    object-fit:cover;
+    object-position:center 55%;
+    transform:translateX(-11.5%);
   }
   .nav nav{ display:flex; gap:24px; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.07em; text-transform:uppercase;}
   .nav nav a{ text-decoration:none; opacity:0.85; }
   .nav nav a:hover{ opacity:1; }
   @media (max-width:760px){
-    /* JPEG masks are unreliable on mobile Safari, so use the source image. */
     .nav .brand{
-      width:126px;
-      height:38px;
-      background:none;
-      -webkit-mask:none;
-      mask:none;
-    }
-    .nav .brand img{
-      display:block;
-      width:100%;
-      height:100%;
-      max-width:none;
-      object-fit:cover;
-      object-position:center 59%;
+      width:132px;
+      height:42px;
     }
     .nav nav{ display:none; }
   }
@@ -142,17 +131,13 @@
   .hero-title{
     margin-top:56px;
     width:min(560px, 90vw);
-    height:clamp(100px, 20vw, 156px);
     position:relative; z-index:2;
-    overflow:hidden;
-    background:var(--paper);
-    -webkit-mask:url("logo-la-barak.jpg") center 60% / 100% auto no-repeat;
-    mask:url("logo-la-barak.jpg") center 60% / 100% auto no-repeat;
-    -webkit-mask-mode:luminance;
-    mask-mode:luminance;
+    font-size:clamp(4.2rem, 10vw, 8rem);
+    font-style:italic;
+    line-height:0.9;
+    color:var(--paper);
     filter:drop-shadow(0 5px 22px rgba(0,0,0,0.65));
   }
-  .hero-title img{display:none;}
   .hero-sub{
     max-width:520px;
     margin-top:28px;
@@ -507,20 +492,6 @@
       padding:16px 20px;
       align-items:center;
     }
-    .nav .brand{font-size:1.05rem;}
-    .hero-title{
-      background:none;
-      -webkit-mask:none;
-      mask:none;
-    }
-    .hero-title img{
-      display:block;
-      width:100%;
-      height:100%;
-      max-width:none;
-      object-fit:cover;
-      object-position:center 60%;
-    }
     .hero{
       min-height:100svh;
       padding:112px 20px 36px;
@@ -601,7 +572,7 @@
     </div>
   </div>
 
-  <h1 class="hero-title" aria-label="La Barak"><img src="logo-la-barak.jpg" alt=""></h1>
+  <h1 class="hero-title">La Barak</h1>
   <p class="hero-sub">La Barak est un bistrot vintage où se mêlent le charme d antan et une ambiance décontractée. Ce lieu accueillant propose une sélection de cafés, boissons et plats de qualité, parfaits pour une pause agréable. Avec ses livres et jeux de société à disposition, La Barak offre une expérience conviviale et relaxante, idéale pour se détendre tout en savourant des mets raffinés et des boissons variées.</p>
 
   <div class="hero-cta">
