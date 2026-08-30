@@ -58,11 +58,28 @@
     mix-blend-mode: difference;
     color:#fff;
   }
-  .nav .brand{ font-family:'Fraunces', serif; font-style:italic; font-size:1.15rem; letter-spacing:0.02em;}
+  .nav .brand{
+    display:block;
+    width:clamp(118px, 13vw, 156px);
+    height:42px;
+    overflow:hidden;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url("logo-la-barak.jpg") center 59% / 100% auto no-repeat;
+    mask:url("logo-la-barak.jpg") center 59% / 100% auto no-repeat;
+    -webkit-mask-mode:luminance;
+    mask-mode:luminance;
+  }
+  .nav .brand img{
+    display:none;
+  }
   .nav nav{ display:flex; gap:24px; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.07em; text-transform:uppercase;}
   .nav nav a{ text-decoration:none; opacity:0.85; }
   .nav nav a:hover{ opacity:1; }
-  @media (max-width:760px){ .nav nav{ display:none; } }
+  @media (max-width:760px){
+    .nav .brand{ width:126px; height:38px; }
+    .nav nav{ display:none; }
+  }
 
   /* ===== hero ===== */
   .hero{
@@ -109,12 +126,16 @@
 
   .hero-title{
     margin-top:56px;
-    font-size: clamp(3.6rem, 12vw, 8.5rem);
-    font-style:italic;
-    font-weight:500;
-    line-height:0.92;
+    width:min(560px, 90vw);
+    height:clamp(100px, 20vw, 156px);
     position:relative; z-index:2;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.35);
+    overflow:hidden;
+    background:var(--paper);
+    -webkit-mask:url("logo-la-barak.jpg") center 60% / 100% auto no-repeat;
+    mask:url("logo-la-barak.jpg") center 60% / 100% auto no-repeat;
+    -webkit-mask-mode:luminance;
+    mask-mode:luminance;
+    filter:drop-shadow(0 5px 22px rgba(0,0,0,0.65));
   }
   .hero-sub{
     max-width:520px;
@@ -525,7 +546,9 @@
 <body>
 
 <header class="nav">
-  <div class="brand">La Barak</div>
+  <a class="brand" href="#top" aria-label="La Barak — accueil">
+    <img src="logo-la-barak.jpg" alt="La Barak">
+  </a>
   <nav>
     <a href="#ambiances">Ambiances</a>
     <a href="#menu">Carte</a>
@@ -536,7 +559,7 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-scrim"></div>
 
@@ -549,7 +572,7 @@
     </div>
   </div>
 
-  <h1 class="hero-title">La Barak</h1>
+  <h1 class="hero-title" aria-label="La Barak"></h1>
   <p class="hero-sub">La Barak est un bistrot vintage où se mêlent le charme d antan et une ambiance décontractée. Ce lieu accueillant propose une sélection de cafés, boissons et plats de qualité, parfaits pour une pause agréable. Avec ses livres et jeux de société à disposition, La Barak offre une expérience conviviale et relaxante, idéale pour se détendre tout en savourant des mets raffinés et des boissons variées.</p>
 
   <div class="hero-cta">
@@ -742,6 +765,8 @@
       <li><span class="k">Adresse</span><span class="v">Rue Fodil Abed, Oran</span></li>
       <li><span class="k">Repère</span><span class="v">PCJ7+2M Oran</span></li>
       <li><span class="k">Téléphone</span><span class="v"><a href="tel:0798397522">0798 39 75 22</a></span></li>
+      <li><span class="k">Facebook</span><span class="v"><a href="https://www.facebook.com/cafelabarak/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Café La Barak</a></span></li>
+      <li><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/la_barak_oran/?hl=fr" target="_blank" rel="noopener noreferrer">@la_barak_oran</a></span></li>
       <li><span class="k">Formule</span><span class="v">Repas sur place · 1 000–2 000 DA / personne</span></li>
       <li><span class="k">Note</span><span class="v">4,4 / 5 sur 148 avis Google</span></li>
     </ul>
