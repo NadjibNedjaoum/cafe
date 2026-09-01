@@ -18,7 +18,10 @@
     --line: rgba(36,22,17,0.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
+  }
   body{
     background:var(--paper);
     color:var(--ink);
@@ -181,6 +184,11 @@
 
   /* ===== section shells ===== */
   section{ padding: 90px clamp(20px,6vw,80px); position:relative; }
+  section, footer{
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity .7s cubic-bezier(.22,.8,.25,1), transform .7s cubic-bezier(.22,.8,.25,1);
+  }
   .section-head{ max-width:640px; margin-bottom:52px; }
   .section-head h2{ font-size: clamp(2.1rem,4.5vw,3.1rem); margin-top:14px; }
 
@@ -374,6 +382,31 @@
   .info-list .v a{ text-decoration:underline; text-decoration-color:rgba(255,239,204,0.48); text-underline-offset:4px; transition:color .2s ease; }
   .info-list .v a:hover{ color:#ffd78f; }
 
+  .wayfinding-panel{
+    display:grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap:12px; margin: 16px 0 18px;
+  }
+  .wayfinding-item{
+    background: rgba(255,239,204,0.08);
+    border:1px solid rgba(255,239,204,0.22);
+    padding:16px 14px;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .wayfinding-item .label{
+    font-family:'JetBrains Mono',monospace; font-size:0.64rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:rgba(255,239,204,0.72);
+  }
+  .wayfinding-item strong{
+    font-size:1.05rem; font-weight:600; line-height:1.25;
+  }
+  .direction-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:8px; width:100%; margin-top:12px; padding:14px 16px;
+    text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
+    border:1px solid rgba(255,239,204,0.52); background:rgba(255,239,204,0.08); color:var(--paper); transition:transform .2s ease, background .2s ease;
+  }
+  .direction-btn:hover{ transform:translateY(-2px); background:rgba(255,239,204,0.12); }
+
   .map-card{
     border:1px solid rgba(255,239,204,0.42);
     position:relative;
@@ -401,6 +434,10 @@
     .info-list li{ gap:10px; padding:13px 12px; }
     .info-list .k{ width:82px; font-size:0.61rem; }
     .info-list .v{ font-size:0.94rem; }
+    .wayfinding-panel{ grid-template-columns:1fr; }
+  }
+  @media (max-width:760px){
+    .wayfinding-panel{ grid-template-columns:1fr; }
   }
   @keyframes location-reveal{
     from{ opacity:0; transform:translateX(-18px); }
@@ -761,15 +798,34 @@
   <h2 style="margin-top:14px;">Nous trouver</h2>
 
   <div class="info-grid">
-    <ul class="info-list">
-      <li><span class="k">Adresse</span><span class="v">Rue Fodil Abed, Oran</span></li>
-      <li><span class="k">Repère</span><span class="v">PCJ7+2M Oran</span></li>
-      <li><span class="k">Téléphone</span><span class="v"><a href="tel:0798397522">0798 39 75 22</a></span></li>
-      <li><span class="k">Facebook</span><span class="v"><a href="https://www.facebook.com/cafelabarak/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Café La Barak</a></span></li>
-      <li><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/la_barak_oran/?hl=fr" target="_blank" rel="noopener noreferrer">@la_barak_oran</a></span></li>
-      <li><span class="k">Formule</span><span class="v">Repas sur place · 1 000–2 000 DA / personne</span></li>
-      <li><span class="k">Note</span><span class="v">4,4 / 5 sur 148 avis Google</span></li>
-    </ul>
+    <div>
+      <div class="wayfinding-panel">
+        <div class="wayfinding-item">
+          <span class="label">5 min from</span>
+          <strong>Place du 1er novembre</strong>
+        </div>
+        <div class="wayfinding-item">
+          <span class="label">Parking nearby</span>
+          <strong>Places de stationnement rue Fodil Abed</strong>
+        </div>
+        <div class="wayfinding-item">
+          <span class="label">Open</span>
+          <strong>Du matin au soir</strong>
+        </div>
+      </div>
+
+      <ul class="info-list">
+        <li><span class="k">Adresse</span><span class="v">Rue Fodil Abed, Oran</span></li>
+        <li><span class="k">Repère</span><span class="v">PCJ7+2M Oran</span></li>
+        <li><span class="k">Téléphone</span><span class="v"><a href="tel:0798397522">0798 39 75 22</a></span></li>
+        <li><span class="k">Facebook</span><span class="v"><a href="https://www.facebook.com/cafelabarak/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Café La Barak</a></span></li>
+        <li><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/la_barak_oran/?hl=fr" target="_blank" rel="noopener noreferrer">@la_barak_oran</a></span></li>
+        <li><span class="k">Formule</span><span class="v">Repas sur place · 1 000–2 000 DA / personne</span></li>
+        <li><span class="k">Note</span><span class="v">4,4 / 5 sur 148 avis Google</span></li>
+      </ul>
+
+      <a class="direction-btn" href="https://www.google.com/maps/search/?api=1&query=Rue+Fodil+Abed+Oran+Algerie" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
 
     <div class="map-card">
       <iframe
@@ -804,11 +860,11 @@
 
 <script>
   const revealTargets = document.querySelectorAll(
-    '.section-head, .spaces-grid > *, .dish-grid > *, .reserve-wrap, .review-grid > *, .info-grid, footer > *'
+    'section, footer, .section-head, .dish-grid > *, .review-grid > *, .info-grid, .reserve-wrap'
   );
   revealTargets.forEach((element, index) => {
     element.classList.add('is-revealing');
-    element.style.transitionDelay = `${Math.min(index % 4, 3) * 90}ms`;
+    element.style.transitionDelay = `${Math.min(index % 5, 4) * 90}ms`;
   });
 
   if ('IntersectionObserver' in window) {
@@ -818,11 +874,25 @@
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.14 });
     revealTargets.forEach((element) => revealObserver.observe(element));
   } else {
     revealTargets.forEach((element) => element.classList.add('is-visible'));
   }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', targetId);
+    });
+  });
 
   const form = document.getElementById('reserveForm');
   const msg = document.getElementById('resMsg');
